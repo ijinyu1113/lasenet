@@ -8,7 +8,7 @@ dependencies:
   - pandas
   - numpy
   - scipy
-  - tensorflow=2.14.0
+  - tensorflow
   - scikit-learn
   - matplotlib
   # - plotnine
@@ -17,7 +17,7 @@ dependencies:
   - jupyterlab
   - seaborn
   - pytables
-  - pip=21.1.2
+  
   # - python-kaleido
   - pip:
       - mat73
