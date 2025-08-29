@@ -42,10 +42,10 @@ for error1 = -3:1:3
                         for lambda_v = lambda_values
                             for omega = omega_values
                                 
-                                if sim_count < 50000 % Change this Number to 35001
-                                    sim_count= sim_count + 1;
-                                    continue;
-                                end
+                                %if sim_count < 50000 % Change this Number to 35001
+                                %    sim_count= sim_count + 1;
+                                %    continue;
+                                %end
                                
                                 fprintf('Simulation %d\n', sim_count);
                                 % File name for saving

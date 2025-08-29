@@ -9,7 +9,7 @@ mkdir(plot_folder); % Ensure folder exists
 mkdir(sum_folder);  % Ensure summary folder exists
 
 % User-defined settings for random sampling
-num_sims = 5000; % Approximately 5000 simulations
+num_sims = 4000; % Approximately 5000 simulations
 
 % Define parameter ranges for uniform sampling
 V0_range = [0.3, 0.3];     % From V0_start to V0_end
@@ -24,7 +24,7 @@ base_x = base_x(81:end);
 base_x = base_x * 10000;
 N = size(base_x, 1);
 
-sim_count = 118; % Track simulation index
+sim_count = 1; % Track simulation index
 
 % Iterate for the desired number of simulations
 while sim_count <= num_sims
