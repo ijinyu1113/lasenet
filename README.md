@@ -1,69 +1,41 @@
+# Latent Variable Sequence Modeling
 
-# Latent Variable Sequence Identification for Cognitive Models with Neural Network Estimators
+**Research conducted at the CognAc Lab, UC Berkeley Department of Cognitive Neuroscience.**
 
-This repository is the official implementation of [LaseNet: Latent Variable Sequence Identification for Cognitive Models with Neural Network Estimators](https://arxiv.org/abs/2406.14742)
+---
 
-If you want to run the code in Google Colab, please check out the [colab example](https://github.com/ti55987/lasenet/blob/master/colab_example/lasenet.ipynb)
+## Project Description
 
-### New Transformers Version
-I have forked this repository and created a transformers vs rnn version of this. The simulation data I used (volatility simulation) is in the data folder. The main code is in `comparison.ipynb`.
+This project focuses on a core challenge in cognitive modeling: learning the latent variables of **volatility** and **stochasticity** from a sequence of perceptual data.
 
-## Requirements
+Our primary contribution is the development of a comprehensive computational framework for this task. We implemented **Kalman filtering** and **particle filtering** techniques in MATLAB to simulate latent variables, creating the necessary ground truth data for model training and validation. The resulting simulation data is then used to train and evaluate neural network models.
 
-To install requirements, first create a conda environment from the environment yaml file by running
+For this purpose, we adapted Recurrent Neural Networks (RNNs) based on the **LaseNet** framework, and also implemented a novel **Transformers-based architecture** to compare its performance against the RNN.
 
-```setup
-conda env create -f environment.yml
-```
-Activate this environment by running
-```
-conda activate lasenet
-```
-### Optional setup
-To experiment with GLM-HMM, we use version 0.0.1 of the Bayesian State Space Modeling framework from Scott Linderman's lab to perform GLM-HMM inference. Within the conda `lasenet` environment, install the forked version of the [ssm](https://github.com/zashwood/ssm) package. Install this version of ssm with the following commands:
-```setup
-git clone https://github.com/lindermanlab/ssm
-cd ssm
-pip install numpy cython
-pip install -e .
-```
+---
 
-We used MATLAB to implement MLE/MAP.  Please install the following toolkits before running the MATLAB code.
-```matlab
-% - Optimization Toolbox (fmincon)
-% - Global Optimization Toolbox
-% - Parallel Computing Toolbox (for parallel execution)
-```
+## Data & Methodological References
 
-## Training LaseNet
-1. Generate simulation data by running the notebook `simulation/simulate.ipynb`. The generated data will be saved to `data` folder. We also include sample data in `zip` file for Meta RL and GLM-HMM models.
-2. Train the LastNet by running the notebook `training.ipynb`. The notebook shows how we train and fine-tune LaseNet for differet computational cognitive models. The generated model will be saved to `results` folder.
+The volatility and stochasticity simulation data used in this work is based on the model described in the following paper:
 
+* Piray, P., & Daw, N. D. (2021). **A model for learning based on the joint estimation of stochasticity and volatility**. *Nature Communications*, 12(1), 6587.
 
-## Evaluation
+The original paper can be accessed [here](https://drive.google.com/file/d/16ab_Lo3SfyQ2LE5PgHmrr4G1jFEYdz9n/view?usp=sharing).
 
-Compare the LastNet and bechmark methods by running the notebook `eval.ipynb`. The notebook includes evaluation sample for 4-P RL and HRL.
+The RNN methodology is inspired by the **LaseNet** framework, described in:
 
-### Real data
-The experiments on real mice data in this work can be reproduced in `mice_fitting/figures_real_data.ipynb`. `mice_fitting` folder includes code and mice data.
+* Pan, T., Li, J., Thompson, B., & Collins, A. (2025). **LaseNet: Latent Variable Sequence Identification for Cognitive Models with Neural Network Estimators**. *Behav Res*, 57, 272.
 
-## Pre-trained Models
+---
 
-You can find all the pretrained models under `results/models`.  You can also download additional pretrained models hosted on the Google Drive:
+## Repository Structure
 
-- [Model](https://drive.google.com/drive/folders/1--Ywm9IQbv0Z7B160Udi81y4uVKLWAJ-?usp=sharing) trained on 4-P RL with 9000 simulated agents and 500 trials per agent.
-- [Model](https://drive.google.com/drive/folders/1-QzmG81fyu8hQWWfL3BwllzEA4l9f1ne?usp=sharing) trained on Meta RL with 9000 simulated agents and 720 trials per agent.
-- [Model](https://drive.google.com/drive/folders/11CdQDc5JUvMCWhUA38zup4e2UTAgVjns?usp=sharing) trained on HRL with 9000 simulated agents and 720 trials per agent.
-- [Model](https://drive.google.com/file/d/1-5QmsZmqH2sl_Kt5Y8RXtwYMlS_LysgL/view?usp=sharing) trained on Weber-imprecision with 6000 simulated agents and 300 trials per agent.
-- [Model](https://drive.google.com/drive/folders/1-0kDCGjrppynMczjJt6Uq3Z-jCES-cTr?usp=sharing) trained on GLM-HMM with 9000 simulated agents and 720 trials per agent.
+* `notebooks/`: Contains the Jupyter notebooks for training, analysis, and model comparison.
+* `src/`: Holds the Python source code, including the model implementations.
+* `matlab/`: Contains the MATLAB code for latent variable simulation, including `sim_uniform_LVLS.m`.
 
+---
 
 ## Results
-The following results are the expected output when running `eval.ipynb`
-![](results/hrl_rpe.png)
-![](results/hrl_cf.png)
 
-## Contributing
-If you'd like to contribute, or have any suggestions for these guidelines, open an issue on this GitHub repository.
-
-All contributions welcome! All content in this repository is licensed under the MIT license.
+Preliminary results from the `model_comparison.ipynb` notebook show that both the RNN and Transformer models perform very well, with the Transformer model achieving slightly better performance.
