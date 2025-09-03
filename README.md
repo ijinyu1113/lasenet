@@ -6,11 +6,9 @@
 
 ## Project Description
 
-This project focuses on a core challenge in cognitive modeling: learning the latent variables of **volatility** and **stochasticity** from a sequence of perceptual data.
+This project focuses on a core challenge in cognitive modeling: learning the latent variables of **volatility** and **stochasticity** from a sequence of perceptual data. My primary contribution is the development of a comprehensive computational framework for this task. I implemented **Kalman filtering** and **particle filtering** techniques in MATLAB to simulate latent variables, creating the necessary ground truth data for model training and validation. The resulting simulation data is then used to train and evaluate neural network models.
 
-Our primary contribution is the development of a comprehensive computational framework for this task. We implemented **Kalman filtering** and **particle filtering** techniques in MATLAB to simulate latent variables, creating the necessary ground truth data for model training and validation. The resulting simulation data is then used to train and evaluate neural network models.
-
-For this purpose, we adapted Recurrent Neural Networks (RNNs) based on the **LaseNet** framework, and also implemented a novel **Transformers-based architecture** to compare its performance against the RNN.
+For this purpose, I converted the original TensorFlow-based LaseNet model into a PyTorch implementation. I also developed and implemented a novel **Transformers-based architecture** to compare its performance against the PyTorch RNN.
 
 ---
 
@@ -20,7 +18,7 @@ The volatility and stochasticity simulation data used in this work is based on t
 
 * Piray, P., & Daw, N. D. (2021). **A model for learning based on the joint estimation of stochasticity and volatility**. *Nature Communications*, 12(1), 6587.
 
-The original paper can be accessed [here](https://drive.google.com/file/d/16ab_Lo3SfyQ2LE5PgHmrr4G1jFEYdz9n/view?usp=sharing).
+The original paper can be accessed [here](https://drive.google.com/file/d/1B7J4jFpU-3d2p81y8yL5y4l_fV6Xw9f0/view?usp=sharing).
 
 The RNN methodology is inspired by the **LaseNet** framework, described in:
 
@@ -38,4 +36,10 @@ The RNN methodology is inspired by the **LaseNet** framework, described in:
 
 ## Results
 
-Preliminary results from the `model_comparison.ipynb` notebook show that both the RNN and Transformer models perform very well, with the Transformer model achieving slightly better performance.
+To evaluate my models, I simulated data, fitted the models to it, and then reconstructed a person's perception from the inferred volatility and stochasticity. Preliminary results from the `model_comparison.ipynb` notebook show that both the RNN and Transformer models perform very well, with the Transformer model achieving slightly better performance.
+
+However, the current model has a problem with fitting human bias in perception. The research on this issue and the validation of the models' performance on real human data is ongoing.
+
+## Acknowledgements
+
+I would like to thank my PhD mentor, Tianhe Wang, and Ti-Fen Pan for their guidance on this project.
