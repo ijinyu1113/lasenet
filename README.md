@@ -5,6 +5,9 @@ This repository is the official implementation of [LaseNet: Latent Variable Sequ
 
 If you want to run the code in Google Colab, please check out the [colab example](https://github.com/ti55987/lasenet/blob/master/colab_example/lasenet.ipynb)
 
+### New Transformers Version
+I have forked this repository and created a transformers vs rnn version of this. The simulation data I used (volatility simulation) is in the data folder. The main code is in `comparison.ipynb`.
+
 ## Requirements
 
 To install requirements, first create a conda environment from the environment yaml file by running
